@@ -1,0 +1,50 @@
+h3{
+    font-size:20px;
+}
+.grid-tabela{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;  
+    gap:50px 10px;
+
+
+}
+.grid-stavka-1{
+    grid-column:1;
+    grid-row:1;
+}
+.grid-stavka-2{
+    grid-column:1;
+    grid-row:2;
+}
+.grid-stavka-3{
+    grid-column:2;
+    grid-row:1;
+}
+.grid-stavka-4{
+    grid-column:2;
+    grid-row:2;
+
+}
+.grid-stavka-5{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 5;
+}
+.lista{
+    list-style: none;
+}
+.tekst-element{
+display: block;
+margin-bottom: 10px;
+
+}
+.element{
+    border: 1px solid black;
+    padding: 5px;
+    background-color: white;
+    margin-bottom: 15px;
+    width: 500px;
+
+}

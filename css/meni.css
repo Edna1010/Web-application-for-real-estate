@@ -1,0 +1,16 @@
+ ul{
+    position: fixed;
+ }
+ li{
+    display: inline-block;
+    margin-left: 100px;
+    color: blue;
+    transition: color 0.3s;
+    font-weight: bold;
+    
+   
+    
+}
+li:hover{
+    color: #ff9900;
+}

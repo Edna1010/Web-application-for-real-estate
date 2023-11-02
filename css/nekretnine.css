@@ -1,0 +1,46 @@
+.lista{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    grid-gap: 20px;
+  
+}
+.grid-stavka{
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.stan{
+    background-color: white;
+}
+.opis{
+    text-align: left;
+
+}
+.cijena{
+    text-align: right;
+}
+button{
+   
+    width: 50px;
+    height: 30px;
+ 
+
+}
+.dugme{
+    text-align: center;
+}
+
+.grid-stavka img{
+    max-width: 100%;
+    height: auto;
+    text-align: center;
+}
+.kuca{
+    background-color: powderblue;
+}
+.pp{
+    background-color:green;
+}

@@ -7,10 +7,15 @@
     color: blue;
     transition: color 0.3s;
     font-weight: bold;
+    text-decoration: none;
     
    
     
 }
 li:hover{
     color: #ff9900;
+}
+body{
+    justify-content: center;
+    display: flex;
 }

@@ -1,3 +1,8 @@
+body {
+    padding-top: 50px;
+    background-color:#fdf1d3 ;
+}
+
 h3{
     font-size:20px;
 }
@@ -47,4 +52,12 @@ margin-bottom: 10px;
     margin-bottom: 15px;
     width: 500px;
 
+}
+
+.meni {
+    top: 0;
+    position: fixed;
+    border: none;
+    width: 100%;
+    height: 50px;
 }

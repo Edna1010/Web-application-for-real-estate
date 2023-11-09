@@ -41,3 +41,12 @@ button{
 .pp{
     background-color:green;
 }
+iframe{
+    top: 0;
+    position: fixed;
+
+   
+}
+.stanovi{
+padding-top: 50px;
+}

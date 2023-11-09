@@ -1,21 +1,32 @@
  ul{
     position: fixed;
+    width: 100%;
+    justify-items: center;
+    text-align: center;
+    padding: 0;
  }
  li{
-    display: inline-block;
-    margin-left: 100px;
-    color: blue;
+    display: inline;
+    margin-left: 50px;
+    margin-right: 50px;
     transition: color 0.3s;
     font-weight: bold;
+
+}
+
+li a{
     text-decoration: none;
-    
-   
-    
 }
-li:hover{
+li a:visited{
+    color: blue;
+}
+
+html, body{
+    background-color: #fdf1d3;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+li a:hover{
     color: #ff9900;
-}
-body{
-    justify-content: center;
-    display: flex;
 }

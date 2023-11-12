@@ -1,0 +1,7 @@
+Za HTML datoteke "meni.html", "prijava.html", "profil.html" nisam imala nijednu grešku.
+Za HTML datoteku "nekretnine.html" sam imala 55 grešaka, gdje je 51 greška bila vezana zbog izostavljanja alt atributa pri opisu slike. Ostale greške su bile zbog nedostatka zatvarajućih tagova za div.
+Za HTML datoteku "detalji.html" sam imala 3 greške, koje su u suštini bile vezane za jedan pogrešno zatvoren tag.
+Validator koji sam koristila je validator.w3.org
+
+Za CSS datoteke nisam imala nijednu grešku.
+Validator koji sam koristila je jigsaw.w3.org

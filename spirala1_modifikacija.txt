@@ -1,0 +1,5 @@
+Za ovu modifikaciju sam u "profil.css" fajlu sam morala uvesti neke izmjene. Uvela sam @media pravilo kako bi se sadržaj na stranici prikazivao 
+na odgovarajući način. U sklopu tog pravila sam uvele neke izmjene za sliku kao što je na primjer float:left kako bi se slika prikazivala lijevo, kao i izmjene za margine
+ kako bih postigla željeni izgled. Također, promijenila sam column-gap kako bih smanjila udaljenost izmjeđu polja  za unos i njihovih naziva.
+
+ Nakon izvršenih izmjena sam ponovo uradila validaciju, te nije bilo grešaka.

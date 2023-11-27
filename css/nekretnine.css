@@ -13,9 +13,7 @@
     justify-content: space-between; 
 
 }
-.stan{
-    background-color: white;
-}
+
 .opis{
     text-align: left;
 }
@@ -35,12 +33,18 @@ button{
     height: auto;
     text-align: center;
 }
-.kuca{
+.stan .grid-stavka {
+    background-color: white;
+}
+
+.kuca .grid-stavka {
     background-color: powderblue;
 }
-.pp{
-    background-color:green;
+
+.poslovni-prostori .grid-stavka {
+    background-color: green;
 }
+
 iframe{
     top: 0;
     position: fixed;

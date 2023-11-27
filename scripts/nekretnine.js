@@ -1,14 +1,27 @@
 function spojiNekretnine(divReferenca, instancaModula, tip_nekretnine) {
     const filtriraneNekretnine=instancaModula.filtrirajNekretnine({ tip_nekretnine: tip_nekretnine });
 
-    let sablon = `<h1>${tip_nekretnine}</h1><div class="lista">`;
+    let sablon = `<h1 style="margin-top:50px">${tip_nekretnine}</h1><div class="lista">`;
 
     if (filtriraneNekretnine.length === 0) {
         sablon;
     } else {
         filtriraneNekretnine.forEach(nekretnina => {
 
+            let klasa;
+
+            if(tip_nekretnine == "Poslovni prostor"){
+                klasa = "poslovni-prostori";
+                }
+                else if(tip_nekretnine == "Stan"){
+                klasa="stanovi";
+                }
+                else if(tip_nekretnine == "Kuca"){
+                klasa="kuce";
+                }
+
             sablon += `
+            <div class="${klasa}">
             <div class="grid-stavka  ${tip_nekretnine.toLowerCase()}">
                 <img src="https://www.nekretnine1.pro/sites/4027/upload/listings/thumb_1697188469_img_4934.jpeg" alt="Slika nekretnine">
                 <div class="opis">
@@ -17,17 +30,11 @@ function spojiNekretnine(divReferenca, instancaModula, tip_nekretnine) {
                 </div>
                 <p class="cijena">Cijena: ${nekretnina.cijena} KM</p>
                 <button>Detalji</button>
+            </div>
             </div>`;
         });
     }
-    sablon += `</div>`;
-    if(tip_nekretnine == "Poslovni prostor")
-    divReferenca.classList.add("poslovni-prostori");
-    if(tip_nekretnine == "Stan")
-    divReferenca.classList.add("stanovi");
-    if(tip_nekretnine == "Kuca")
-    divReferenca.classList.add("kuce");
-
+    if(divReferenca) 
     divReferenca.innerHTML = sablon;
 }
  

@@ -33,11 +33,11 @@ button{
     height: auto;
     text-align: center;
 }
-.stan .grid-stavka {
+.stanovi .grid-stavka {
     background-color: white;
 }
 
-.kuca .grid-stavka {
+.kuce .grid-stavka {
     background-color: powderblue;
 }
 

@@ -16,7 +16,7 @@ function spojiNekretnine(divReferenca, instancaModula, tip_nekretnine) {
                 else if(tip_nekretnine == "Stan"){
                 klasa="stanovi";
                 }
-                else if(tip_nekretnine == "Kuca"){
+                else if(tip_nekretnine == "Kuća"){
                 klasa="kuce";
                 }
 
@@ -77,7 +77,141 @@ const listaNekretnina = [{
         korisnik_id: 2,
         tekst_upita: "Integer tincidunt."
     }]
-}
+},
+{id: 3,
+tip_nekretnine: "Stan",
+naziv: "Useljiv stan Vogošća",
+kvadratura: 72,
+cijena: 100000,
+tip_grijanja: "plin",
+lokacija: "Novo Sarajevo",
+godina_izgradnje: 2019,
+datum_objave: "11.10.2023.",
+opis: "Sociis natoque penatibus.",
+upiti: [{
+    korisnik_id: 1,
+    tekst_upita: "Nullam eu pede mollis pretium."
+},
+{
+    korisnik_id: 2,
+    tekst_upita: "Phasellus viverra nulla."
+}]
+},
+{id: 4,
+    tip_nekretnine: "Stan",
+    naziv: "Useljiv stan Otoka",
+    kvadratura: 100,
+    cijena: 300000,
+    tip_grijanja: "plin",
+    lokacija: "Novo Sarajevo",
+    godina_izgradnje: 2019,
+    datum_objave: "11.1.2021.",
+    opis: "Sociis natoque penatibus.",
+    upiti: [{
+        korisnik_id: 1,
+        tekst_upita: "Nullam eu pede mollis pretium."
+    },
+    {
+        korisnik_id: 2,
+        tekst_upita: "Phasellus viverra nulla."
+    }]
+    },
+    {id: 5,
+        tip_nekretnine: "Kuća",
+        naziv: "Useljiva kuća Novo Sarajevo",
+        kvadratura: 200,
+        cijena: 500000,
+        tip_grijanja: "plin",
+        lokacija: "Novo Sarajevo",
+        godina_izgradnje: 2019,
+        datum_objave: "11.09.2020.",
+        opis: "Sociis natoque penatibus.",
+        upiti: [{
+            korisnik_id: 1,
+            tekst_upita: "Nullam eu pede mollis pretium."
+        },
+        {
+            korisnik_id: 2,
+            tekst_upita: "Phasellus viverra nulla."
+        }]
+        },
+        {id: 6,
+            tip_nekretnine: "Kuća",
+            naziv: "Useljiva kuća Centar",
+            kvadratura: 250,
+            cijena: 700000,
+            tip_grijanja: "plin",
+            lokacija: "Centar",
+            godina_izgradnje: 2019,
+            datum_objave: "18.09.2023.",
+            opis: "Sociis natoque penatibus.",
+            upiti: [{
+                korisnik_id: 1,
+                tekst_upita: "Nullam eu pede mollis pretium."
+            },
+            {
+                korisnik_id: 2,
+                tekst_upita: "Phasellus viverra nulla."
+            }]
+            },
+            {id: 7,
+                tip_nekretnine: "Kuća",
+                naziv: "Useljiva kuća Ilidža",
+                kvadratura: 350,
+                cijena: 900000,
+                tip_grijanja: "plin",
+                lokacija: "Ilidža",
+                godina_izgradnje: 2019,
+                datum_objave: "18.09.2022.",
+                opis: "Sociis natoque penatibus.",
+                upiti: [{
+                    korisnik_id: 1,
+                    tekst_upita: "Nullam eu pede mollis pretium."
+                },
+                {
+                    korisnik_id: 2,
+                    tekst_upita: "Phasellus viverra nulla."
+                }]
+                },
+                {id: 8,
+                    tip_nekretnine: "Poslovni prostor",
+                    naziv: "Veliki poslovni prostor",
+                    kvadratura: 110,
+                    cijena: 30000,
+                    tip_grijanja: "plin",
+                    lokacija: "Novo Sarajevo",
+                    godina_izgradnje: 2019,
+                    datum_objave: "18.09.2023.",
+                    opis: "Sociis natoque penatibus.",
+                    upiti: [{
+                        korisnik_id: 1,
+                        tekst_upita: "Nullam eu pede mollis pretium."
+                    },
+                    {
+                        korisnik_id: 2,
+                        tekst_upita: "Phasellus viverra nulla."
+                    }]
+                    },
+                    {id: 9,
+                        tip_nekretnine: "Poslovni prostor",
+                        naziv: "Srednji poslovni prostor",
+                        kvadratura: 80,
+                        cijena: 20000,
+                        tip_grijanja: "plin",
+                        lokacija: "Novo Sarajevo",
+                        godina_izgradnje: 2019,
+                        datum_objave: "18.12.2022.",
+                        opis: "Sociis natoque penatibus.",
+                        upiti: [{
+                            korisnik_id: 1,
+                            tekst_upita: "Nullam eu pede mollis pretium."
+                        },
+                        {
+                            korisnik_id: 2,
+                            tekst_upita: "Phasellus viverra nulla."
+                        }]
+                        }
+
 ]
 
 const listaKorisnika = [{

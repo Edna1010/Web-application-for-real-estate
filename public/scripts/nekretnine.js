@@ -1,4 +1,10 @@
 function spojiNekretnine(divReferenca, instancaModula, tip_nekretnine) {
+
+    instancaModula.getNekretnine(function (error, nekretnine) {
+        if (error) {
+          console.error('Error fetching nekretnine:', error);
+          return;
+        }})
     const filtriraneNekretnine=instancaModula.filtrirajNekretnine({ tip_nekretnine: tip_nekretnine });
 
     let sablon = `<h1 style="margin-top:50px">${tip_nekretnine}</h1><div class="lista">`;
@@ -42,7 +48,7 @@ const divStan = document.getElementById("stan");
 const divKuca = document.getElementById("kuca");
 const divPp = document.getElementById("pp");
 
-const listaNekretnina = [{
+/*const listaNekretnina = [{
     id: 1,
     tip_nekretnine: "Stan",
     naziv: "Useljiv stan Sarajevo",
@@ -226,12 +232,30 @@ const listaKorisnika = [{
     prezime: "Nekic2",
     username: "username2",
 }]
-
+*/
 //instanciranje modula
-let nekretnine = SpisakNekretnina();
+PoziviAjax.getNekretnine(function (error, nekretnineData) {
+    if (error) {
+      console.error('Error fetching nekretnine:', error);
+      return;
+    }})
+  
+    let nekretnine = SpisakNekretnina();
+//let nekretnine=PoziviAjax.getNekretnine()
+//let nekretnine = SpisakNekretnina();
 nekretnine.init(listaNekretnina, listaKorisnika);
 
 //pozivanje funkcije
 spojiNekretnine(divStan, nekretnine, "Stan");
 spojiNekretnine(divKuca, nekretnine, "Kuća");
 spojiNekretnine(divPp, nekretnine, "Poslovni prostor");
+
+function odjava() {
+    PoziviAjax.postLogout(function (error, data) {
+        if (error) {
+            console.error('Greška prilikom odjave:', error);
+        } else {
+            window.location.href="http://localhost:3000/prijava.html";
+        }
+    });
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="hr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Meni</title>
+        <link href="../css/meni.css" rel="stylesheet"> 
+         <script src="../scripts/PoziviAjax.js"></script>
+
+    </head>
+    <body >
+        <ul>
+            <li id="profil"><a href="profil.html" target="_parent">Profil</a></li>
+            <li id="nekretnine"><a href="nekretnine.html" target="_parent">Nekretnine</a></li>
+            <li id="detalji"><a href="detalji.html" target="_parent">Detalji</a></li>
+            <li id="prijava"><a href="prijava.html" target="_parent">Prijava</a></li>
+            <li id="odjava" style="display: none;" target="_parent"><a href="#" onclick="odjava()">Odjava</a></li>
+
+        </ul>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                console.log('Stranica učitana');
+                PoziviAjax.getKorisnik(function (error, data) {
+                    const profilLink = document.getElementById('profil');
+                    const nekretnineLink = document.getElementById('nekretnine');
+                    const detaljiLink = document.getElementById('detalji');
+                    const prijavaLink = document.getElementById('prijava');    
+                    const odjavaLink = document.getElementById('odjava');
+
+                    if (data) {
+                        console.log("jejh");
+                        profilLink.style.display = 'block';
+                        nekretnineLink.style.display = 'block';
+                        detaljiLink.style.display = 'block';
+                        prijavaLink.style.display = 'none';
+                        odjavaLink.style.display = 'block';
+
+                    } else {
+                        profilLink.style.display = 'none';
+                        nekretnineLink.style.display = 'block';
+                        detaljiLink.style.display = 'block';
+                        prijavaLink.style.display = 'block';   
+                        odjavaLink.style.display = 'none';
+                 }
+                });
+        });
+        </script>
+    </body>
+   
+</html>

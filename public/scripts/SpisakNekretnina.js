@@ -38,7 +38,7 @@ let SpisakNekretnina = function () {
     getFiltriraneNekretnine: getFiltriraneNekretnine
     }
     }
-    const spisakNekretnina = [{
+   /*const spisakNekretnina = [{
         id: 1,
         tip_nekretnine: "Stan",
         naziv: "Useljiv stan Sarajevo",
@@ -87,6 +87,6 @@ let SpisakNekretnina = function () {
         ime: "Neko2",
         prezime: "Nekic2",
         username: "username2",
-    }]
+    }]*/
     
         

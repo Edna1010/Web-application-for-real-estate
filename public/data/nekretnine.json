@@ -48,6 +48,10 @@
       {
         "korisnik_id": 1,
         "tekst": "Pitanje o nekretnini i cijeni."
+      },
+      {
+        "korisnik_id": 1,
+        "tekst": "Pitanje o nekretnini i cijeni."
       }
     ]
   }

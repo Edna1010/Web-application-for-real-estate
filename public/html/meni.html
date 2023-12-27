@@ -44,7 +44,20 @@
                  }
                 });
         });
+
+     function odjava() {
+    PoziviAjax.postLogout(function (error, data) {
+        if (error) {
+            console.error('Greška prilikom odjave:', error);
+        } else {
+            window.location.href="http://localhost:3000/prijava.html";
+        }
+    });
+}
         </script>
+       <!-- <script src="../scripts/PoziviAjax.js"></script>-->
+        <script src="../scripts/SpisakNekretnina.js"></script>
+        <script src="../scripts/nekretnine.js"></script>
     </body>
    
 </html>

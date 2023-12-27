@@ -57,3 +57,36 @@ padding-top: 0px;
 body{
     background-color: #fdf1d3;
 }
+
+#pretragaForma {
+    margin-top: 50px;
+    background-color: #f0f0f0; 
+    border-radius: 6px;
+    padding: 15px;
+    display: flex;
+    gap: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+#pretragaForma label {
+    font-size: 16px;
+}
+
+#pretragaForma input,
+#pretragaForma button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 10px;
+}
+
+#pretragaForma button {
+    background-color: #3498db; 
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+#pretragaForma button:hover {
+    background-color: #2980b9; 
+}

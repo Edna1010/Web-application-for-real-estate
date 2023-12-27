@@ -9,14 +9,34 @@
         <link href="../css/nekretnine.css" rel="stylesheet">
     </head>
     <body>
-        <script src="../scripts/SpisakNekretnina.js"></script>
         <iframe src="../html/meni.html" style="border: none; width: 100%; height: 50px;"></iframe>
-    <div id="stan">
+
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+            <form id="pretragaForma" style="display: flex;">
+                <label for="minCijena">Min. cijena:</label>
+                <input type="number" id="min-cijena" name="minCijena">
+
+                <label for="maxCijena">Max. cijena:</label>
+                <input type="number" id="max-cijena" name="maxCijena">
+
+                <label for="minKvadratura">Min. kvadratura:</label>
+                <input type="number" id="min-kvadratura" name="minKvadratura">
+
+                <label for="maxKvadratura">Max. kvadratura:</label>
+                <input type="number" id="max-kvadratura" name="maxKvadratura">
+
+                <button id="dugme" onclick="filtriraj(); return false;">Pretraži</button>
+            </form>
+        </div>
+        <div id="stan">
        </div>
        <div id="kuca">
        </div>
        <div id="pp">
        </div>
+       <script src="../scripts/PoziviAjax.js"></script>
+       <script src="../scripts/SpisakNekretnina.js"></script>
        <script src="../scripts/nekretnine.js"></script>
+
     </body>
 </html>

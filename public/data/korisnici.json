@@ -15,9 +15,9 @@
   },
   {
     "id": 3,
-    "ime": "Neko3",
-    "prezime": "Nekic3",
-    "username": "username3",
-    "password": "$2a$10$BccaYoUAtjzx.h8fuhTNi.qOJRmMmb7gBNS7s6gG/TRVJTvPx/m6O"
+    "ime": "NewFirstName",
+    "prezime": "NewLastName",
+    "username": "newUsername",
+    "password": "$2b$10$OovjbchI56.M/.0Jv8CPbOYGbJhzry3pySPDOiFci3CsWSgRS3KEy"
   }
 ]

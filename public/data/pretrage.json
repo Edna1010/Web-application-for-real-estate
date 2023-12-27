@@ -1,0 +1,24 @@
+{
+  "podaci": [
+    {
+      "id": 1,
+      "brojpretraga": 10,
+      "brojklikova": 7
+    },
+    {
+      "id": 2,
+      "brojpretraga": 20,
+      "brojklikova": 8
+    },
+    {
+      "id": 3,
+      "brojpretraga": 5,
+      "brojklikova": 2
+    },
+    {
+      "id": 4,
+      "brojpretraga": 6,
+      "brojklikova": 0
+    }
+  ]
+}

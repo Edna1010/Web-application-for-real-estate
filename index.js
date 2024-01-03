@@ -1,7 +1,9 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 const app = express();
 const port = 3000;
+hashPasswords();
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/detalji.html/:optional?', (req, res) => {
@@ -25,7 +27,6 @@ app.get('/profil.html/:optional?', (req, res) => {
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
-const fs = require('fs');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
@@ -37,14 +38,15 @@ app.use(session({
 
 async function hashPasswords() {
   try {
-    const rawdata = await fs.readFile('public/data/korisnici.json', 'utf-8');
+    const rawdata = await fs.promises.readFile('public/data/korisnici.json', { encoding: 'utf-8' });
     const korisnici = JSON.parse(rawdata);
-
+  
     await Promise.all(korisnici.map(async (korisnik) => {
+      if(!korisnik.password.startsWith('$2b$')){
       const hashPassword = await bcrypt.hash(korisnik.password, 10);
-      korisnik.hashPassword = hashPassword;
-    }));
-
+      korisnik.password = hashPassword; 
+   } }));
+    await fs.promises.writeFile('public/data/korisnici.json', JSON.stringify(korisnici, null, 2));
     console.log(korisnici);
   } catch (error) {
     console.error('Error:', error);
@@ -58,8 +60,8 @@ app.post('/login', async (req, res) => {
     const rawdata = await readFileAsync('public/data/korisnici.json', 'utf-8');
     const korisnici = JSON.parse(rawdata);
     const { username, password } = req.body;
+    console.log(req.body);
     const korisnik = korisnici.find((korisnik) => korisnik.username === username);
-
     if (korisnik && await bcrypt.compare(password, korisnik.password)) {
       req.session.username = username;
       return res.status(200).json({ poruka: 'Uspješna prijava' });
@@ -125,7 +127,7 @@ app.get('/korisnik', async (req, res) => {
   }
 });
 app.post('/upit', async (req, res) => {
-  try {5
+  try {
     const nekretnineRaw =await readFileAsync('public/data/nekretnine.json', 'utf-8');
     const nekretnine= JSON.parse(nekretnineRaw);
     const rawdata = await readFileAsync('public/data/korisnici.json', 'utf-8');
@@ -215,19 +217,13 @@ async function azurirajPretrage(id) {
     const jsonFilePath = 'public/data/pretrage.json';
     let sadrzajDatoteke = await fsp.readFile(jsonFilePath, { encoding: 'utf-8' });
     let jsonObjekt = JSON.parse(sadrzajDatoteke);
-    //console.log(jsonObjekt);
     let podaci = jsonObjekt.podaci;
-    //console.log("+",podaci); 
     let  nekretnina = podaci.find((element) => element.id === id);
-    //console.log(nekretnina);
     if (nekretnina) {
-      //console.log("doslo");
       nekretnina.brojpretraga += 1;
-      //console.log(nekretnina.brojpretraga);
     } else {
       podaci.push({ id, brojpretraga: 1, brojklikova: 0 });
     }
-    //console.log("doslo2");
     await fsp.writeFile(jsonFilePath, JSON.stringify(jsonObjekt, null, 2), { encoding: 'utf-8' });
   } catch (error) {
     console.error('Greška prilikom ažuriranja pretraga:', error);
@@ -236,10 +232,10 @@ async function azurirajPretrage(id) {
 app.post('/marketing/nekretnine', async (req, res) => {
   try {
     const nizNekretnina = req.body.nizNekretnina;
-    //console.log(nizNekretnina);
     for (const nekretninaId of nizNekretnina) {
       await azurirajPretrage(nekretninaId);
     }
+    //console.log("ok");
     res.status(200).send();
   } catch (error) {
     console.error(error);
@@ -275,30 +271,41 @@ app.post('/marketing/nekretnina/:id', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
-
 app.post('/marketing/osvjezi', async (req, res) => {
-  try {
-    const noviNizNekretnina = req.body.nizNekretnina;
-    const jsonFilePath = 'public/data/pretrage.json';
-    let sadrzajDatoteke = await fsp.readFile(jsonFilePath, { encoding: 'utf-8' });
-    let jsonObjekt = JSON.parse(sadrzajDatoteke);
-    let podaci = jsonObjekt.podaci;
-    if (!noviNizNekretnina) {
-      res.status(200).json({});
-      return;
+  try{
+    if (!req.body || Object.keys(req.body).length === 0) {
+      //console.log("lol");
+      return res.status(200).send({ nizNekretnina: [] });
     }
-      const promjene = noviNizNekretnina.filter(novaNekretnina => {
-      const staraNekretnina = podaci.find(stara => stara.id === novaNekretnina);
-      return !staraNekretnina || staraNekretnina.brojklikova!== novaNekretnina.brojklikova|| staraNekretnina.brojpretraga!== novaNekretnina.brojpretraga;
+    const nizNekretnina = req.body;
+    //console.log(nizNekretnina);
+    //console.log("doslo je");
+    fs.readFile('public/data/pretrage.json', (error, data) => {
+      if (error) {
+        return res.status(500).json({ greska: error.message });
+      }
+      const podaci = JSON.parse(data);
+      const rezultati = [];
+      nizNekretnina.forEach((id) => {
+        const nekretnina = podaci.podaci.find((item) => item.id === id);
+        if (nekretnina) {
+          //console.log("petčja");
+          rezultati.push({
+            id: nekretnina.id,
+            brojklikova: nekretnina.brojklikova,
+            brojpretraga: nekretnina.brojpretraga
+          });
+        }
+      });
+      console.log("+",rezultati);
+      res.status(200).send({ nizNekretnina: rezultati });
     });
-    podaci = noviNizNekretnina;
-    res.status(200).json({ nizNekretnina: promjene });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal Server Error');
-  }
-});
 
+  } catch (error) {
+    res.status(500).json({ greska: error.message });
+  }
+
+  });
 app.listen(port, () => {
   console.log(`Express server pokrenut na http://localhost:${port}`);
 });

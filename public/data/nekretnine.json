@@ -54,5 +54,35 @@
         "tekst": "Pitanje o nekretnini i cijeni."
       }
     ]
+  },
+  {
+    "id": 5,
+    "tip_nekretnine": "Poslovni prostor",
+    "naziv": "Mali poslovni prostor",
+    "kvadratura": 20,
+    "cijena": 70000,
+    "tip_grijanja": "struja",
+    "lokacija": "Centar",
+    "godina_izgradnje": 2005,
+    "datum_objave": "20.08.2023.",
+    "opis": "Magnis dis parturient montes.",
+    "upiti": [
+      {
+        "korisnik_id": 2,
+        "tekst_upita": "Integer tincidunt."
+      },
+      {
+        "korisnik_id": 2,
+        "tekst": "Pitanje o nekretnini i cijeni."
+      },
+      {
+        "korisnik_id": 1,
+        "tekst": "Pitanje o nekretnini i cijeni."
+      },
+      {
+        "korisnik_id": 1,
+        "tekst": "Pitanje o nekretnini i cijeni."
+      }
+    ]
   }
 ]

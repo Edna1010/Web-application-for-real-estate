@@ -14,15 +14,40 @@ const PoziviAjax = (() => {
         ajax.send(); 
     }
     function impl_putKorisnik(noviPodaci, fnCallback) {
+        let ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function() {
+            if (ajax.readyState === XMLHttpRequest.DONE) {
+                if (ajax.status === 200) {
+                   fnCallback(null, JSON.parse(ajax.responseText));
+                } else {
+                   fnCallback(ajax.statusText, null);
+                }
+            }
+        };
+        ajax.open('PUT', '/korisnik', true);
+        ajax.setRequestHeader('Content-Type', 'application/json');
         const data=noviPodaci;
-        sendRequest('PUT', '/korisnik', data, fnCallback)
+        const requestBody = JSON.stringify(data);
+        ajax.send(requestBody);
 
     }
     function impl_postUpit(nekretnina_id, tekst_upita, fnCallback) {
-
+        let ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function() {
+            if (ajax.readyState === XMLHttpRequest.DONE) {
+                if (ajax.status === 200) {
+                   fnCallback(null, JSON.parse(ajax.responseText));
+                } else {
+                   fnCallback(ajax.statusText, null);
+                }
+            }
+        };
+        ajax.open('POST', '/upit', true);
+        ajax.setRequestHeader('Content-Type', 'application/json');
         const data={nekretnina_id, tekst_upita}
-        sendRequest('POST', '/upit',data, fnCallback)
-    }
+        const requestBody = JSON.stringify(data);
+        ajax.send(requestBody);
+        }
     function impl_getNekretnine(fnCallback) {
         let ajax = new XMLHttpRequest();
         ajax.onreadystatechange = function() {
@@ -45,7 +70,7 @@ const PoziviAjax = (() => {
                     if (ajax.status === 200) {
                        fnCallback(null, JSON.parse(ajax.responseText));
                     } else {
-                        fnCallback(ajax.statusText, null);
+                       fnCallback(ajax.statusText, null);
                     }
                 }
             };

@@ -2,13 +2,13 @@
   "podaci": [
     {
       "id": 1,
-      "brojpretraga": 10,
-      "brojklikova": 7
+      "brojpretraga": 385,
+      "brojklikova": 152
     },
     {
       "id": 2,
-      "brojpretraga": 20,
-      "brojklikova": 8
+      "brojpretraga": 351,
+      "brojklikova": 106
     },
     {
       "id": 3,
@@ -18,6 +18,29 @@
     {
       "id": 4,
       "brojpretraga": 6,
+      "brojklikova": 0
+    },
+    {
+      "id": 5,
+      "brojpretraga": 231,
+      "brojklikova": 50
+    },
+    {
+      "id": [
+        1,
+        2,
+        5
+      ],
+      "brojpretraga": 1,
+      "brojklikova": 0
+    },
+    {
+      "id": [
+        1,
+        2,
+        5
+      ],
+      "brojpretraga": 1,
       "brojklikova": 0
     }
   ]

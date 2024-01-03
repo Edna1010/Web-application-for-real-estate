@@ -14,7 +14,6 @@ let SpisakNekretnina = function () {
             if(kriterij===undefined|| Object.keys(kriterij).length===0){
                 return listaNekretnina;
             }
-
         return listaNekretnina.filter(nekretnina=>{
             return(
             (!kriterij.tip_nekretnine || nekretnina.tip_nekretnine === kriterij.tip_nekretnine) &&

@@ -5,21 +5,13 @@ const MarketingAjax = (() => {
   let trenutnoStanjeKlikova = {};
   
   function osvjeziPretrage(divNekretnine) {
-    console.log("hh");
-    console.log(divNekretnine);
     const updateFunction = async () => {
       const xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-          console.log('Sirovi odgovor je:', xhr.responseText);
-
           const data = JSON.parse(xhr.responseText);
-
           let prethodniBrojPretraga = null;
-
           data.nizNekretnina.forEach((nekretnina) => {
-              console.log(nekretnina.id);
-              console.log(nekretnina.brojpretraga);
               prethodniBrojPretraga=nekretnina.brojpretraga;
               const divId = `pretrage-${nekretnina.id}`;
               const div = divNekretnine.querySelector(`#${divId}`);
@@ -71,14 +63,9 @@ const MarketingAjax = (() => {
   
       filtrirano = false;
     };
-  
-    //Pozovite funkciju odmah
-    //updateFunction();
-  
-    // Postavite interval unutar updateFunction
+    updateFunction();
     setInterval(updateFunction, 500);
   }
-//osvjeziPretrage(document.getElementById('divNekretnine'));
 
 function osvjeziKlikove(divNekretnine) {
     const updateFunction = async () => {
@@ -86,15 +73,9 @@ function osvjeziKlikove(divNekretnine) {
             const xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4 && xhr.status == 200) {
-                    console.log('Sirovi odgovor je:', xhr.responseText);
-
                     const data = JSON.parse(xhr.responseText);
-
                     let prethodniBrojPretraga = null;
-
                     data.nizNekretnina.forEach((nekretnina) => {
-                        console.log(nekretnina.id);
-                        console.log(nekretnina.brojpretraga);
                         prethodniBrojPretraga=nekretnina.brojpretraga;
                         const divId = `pretrage-${nekretnina.id}`;
                         const div = divNekretnine.querySelector(`#${divId}`);
@@ -137,7 +118,6 @@ function osvjeziKlikove(divNekretnine) {
 
             xhr.open('POST', '/marketing/osvjezi', true);
             xhr.setRequestHeader('Content-Type', 'application/json');
-            console.log(lista);
             if (filtrirano) {
                 xhr.send(JSON.stringify(lista));
             } else {
@@ -148,15 +128,12 @@ function osvjeziKlikove(divNekretnine) {
         } catch (error) {
             console.error("Greška prilikom izvođenja zahtjeva:", error);
         } finally {
-            // Postavite sljedeći poziv nakon završetka trenutnog zahtjeva
+            updateFunction();
             setTimeout(updateFunction, 500);
         }
     };
 
-    // Prvi poziv funkcije
-    updateFunction();
 }
-   //osvjeziKlikove(document.getElementById('divNekretnine'));
 
    function klikNekretnina(idNekretnine) {
     filtrirano = true;
@@ -181,14 +158,12 @@ function osvjeziKlikove(divNekretnine) {
 }
 
    function novoFiltriranje(listaFiltriranihNekretnina){
-    console.log("listaa", listaFiltriranihNekretnina);
     filtrirano=true;
     lista = listaFiltriranihNekretnina.map(nekretnina => nekretnina.id);
     let ajax = new XMLHttpRequest();
     ajax.onreadystatechange = function() {
         if (ajax.readyState === XMLHttpRequest.DONE) {
             if (ajax.status === 200) {
-               //fnCallback(null, JSON.parse(ajax.responseText));
             } else {
                fnCallback(ajax.statusText, null);
             }

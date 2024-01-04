@@ -1,7 +1,6 @@
 function spojiNekretnine(divReferenca, instancaModula, tip_nekretnine) {
 
     const filtriraneNekretnine=instancaModula.filtrirajNekretnine({ tip_nekretnine: tip_nekretnine });
-    console.log(filtriraneNekretnine);
     let sablon = `<h1 style="margin-top:50px">${tip_nekretnine}</h1><div class="lista">`;
 
     if (filtriraneNekretnine.length === 0) {

@@ -2,45 +2,27 @@
   "podaci": [
     {
       "id": 1,
-      "brojpretraga": 385,
-      "brojklikova": 152
+      "brojpretraga": 0,
+      "brojklikova": 0
     },
     {
       "id": 2,
-      "brojpretraga": 351,
-      "brojklikova": 106
+      "brojpretraga": 0,
+      "brojklikova": 0
     },
     {
       "id": 3,
-      "brojpretraga": 5,
-      "brojklikova": 2
+      "brojpretraga": 0,
+      "brojklikova": 0
     },
     {
       "id": 4,
-      "brojpretraga": 6,
+      "brojpretraga": 0,
       "brojklikova": 0
     },
     {
       "id": 5,
-      "brojpretraga": 231,
-      "brojklikova": 50
-    },
-    {
-      "id": [
-        1,
-        2,
-        5
-      ],
-      "brojpretraga": 1,
-      "brojklikova": 0
-    },
-    {
-      "id": [
-        1,
-        2,
-        5
-      ],
-      "brojpretraga": 1,
+      "brojpretraga": 0,
       "brojklikova": 0
     }
   ]

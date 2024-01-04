@@ -47,7 +47,6 @@ async function hashPasswords() {
       korisnik.password = hashPassword; 
    } }));
     await fs.promises.writeFile('public/data/korisnici.json', JSON.stringify(korisnici, null, 2));
-    console.log(korisnici);
   } catch (error) {
     console.error('Error:', error);
   }
@@ -60,7 +59,6 @@ app.post('/login', async (req, res) => {
     const rawdata = await readFileAsync('public/data/korisnici.json', 'utf-8');
     const korisnici = JSON.parse(rawdata);
     const { username, password } = req.body;
-    console.log(req.body);
     const korisnik = korisnici.find((korisnik) => korisnik.username === username);
     if (korisnik && await bcrypt.compare(password, korisnik.password)) {
       req.session.username = username;
@@ -100,13 +98,10 @@ app.post('/logout', async (req, res) => {
 
 app.get('/korisnik', async (req, res) => {
   try {
-    console.log(req.session.username);
     if (req.session.username) {
       const rawdata = await readFileAsync('public/data/korisnici.json', 'utf-8');
       const korisnici = JSON.parse(rawdata);
       const korisnik = korisnici.find((korisnik) => korisnik.username === req.session.username);
-      console.log(req.session.username);
-      console.log(korisnik);
       if (!korisnik) {
         res.status(500).json({ greska: 'Nepoznata greška prilikom dohvaćanja podataka o korisniku' });
         return;
@@ -235,7 +230,6 @@ app.post('/marketing/nekretnine', async (req, res) => {
     for (const nekretninaId of nizNekretnina) {
       await azurirajPretrage(nekretninaId);
     }
-    //console.log("ok");
     res.status(200).send();
   } catch (error) {
     console.error(error);
@@ -274,12 +268,9 @@ app.post('/marketing/nekretnina/:id', async (req, res) => {
 app.post('/marketing/osvjezi', async (req, res) => {
   try{
     if (!req.body || Object.keys(req.body).length === 0) {
-      //console.log("lol");
       return res.status(200).send({ nizNekretnina: [] });
     }
     const nizNekretnina = req.body;
-    //console.log(nizNekretnina);
-    //console.log("doslo je");
     fs.readFile('public/data/pretrage.json', (error, data) => {
       if (error) {
         return res.status(500).json({ greska: error.message });
@@ -289,7 +280,6 @@ app.post('/marketing/osvjezi', async (req, res) => {
       nizNekretnina.forEach((id) => {
         const nekretnina = podaci.podaci.find((item) => item.id === id);
         if (nekretnina) {
-          //console.log("petčja");
           rezultati.push({
             id: nekretnina.id,
             brojklikova: nekretnina.brojklikova,
@@ -297,7 +287,6 @@ app.post('/marketing/osvjezi', async (req, res) => {
           });
         }
       });
-      console.log("+",rezultati);
       res.status(200).send({ nizNekretnina: rezultati });
     });
 

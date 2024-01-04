@@ -9,8 +9,6 @@ let SpisakNekretnina = function () {
     
     }
     let filtrirajNekretnine = function (kriterij) {
-            console.log(listaNekretnina.length);
-            console.log(kriterij);
             if(kriterij===undefined|| Object.keys(kriterij).length===0){
                 return listaNekretnina;
             }

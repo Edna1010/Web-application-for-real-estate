@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('Stranica učitana');
     PoziviAjax.getKorisnik(function (error, data) {
         const profilLink = document.getElementById('profil');
         const nekretnineLink = document.getElementById('nekretnine');
@@ -8,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const odjavaLink = document.getElementById('odjava');
 
         if (data) {
-            console.log("jejh");
             profilLink.style.display = 'block';
             nekretnineLink.style.display = 'block';
             detaljiLink.style.display = 'block';

@@ -2,12 +2,12 @@
   "podaci": [
     {
       "id": 1,
-      "brojpretraga": 0,
+      "brojpretraga": 13,
       "brojklikova": 0
     },
     {
       "id": 2,
-      "brojpretraga": 0,
+      "brojpretraga": 13,
       "brojklikova": 0
     },
     {
@@ -22,7 +22,12 @@
     },
     {
       "id": 5,
-      "brojpretraga": 0,
+      "brojpretraga": 13,
+      "brojklikova": 1
+    },
+    {
+      "id": null,
+      "brojpretraga": 3,
       "brojklikova": 0
     }
   ]

@@ -7,12 +7,15 @@ PoziviAjax.getNekretnine(function (error, data) {
           return;
         }
     else{ 
+        console.log(data);
         listaNekretnina=data;
+        console.log(listaNekretnina);
         nekretnine.init(listaNekretnina, listaKorisnika);
+        console.log(nekretnine);
         spojiNekretnine(divStan, nekretnine, "Stan");
         spojiNekretnine(divKuca, nekretnine, "Kuća");
         spojiNekretnine(divPp, nekretnine, "Poslovni prostor");
-        MarketingAjax.osvjeziPretrage(document.getElementById("divNekretnine"));
+       MarketingAjax.osvjeziPretrage(document.getElementById("divNekretnine"));
         MarketingAjax.novoFiltriranje(listaNekretnina);
         MarketingAjax.osvjeziKlikove(document.getElementById("divNekretnine"));
     

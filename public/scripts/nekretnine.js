@@ -46,26 +46,66 @@ const divPp = document.getElementById("pp");
 
 
 let trenutniUvećaniID = 0; 
+let prikaziDetaljeDodato = false;
 
 function brojKlikova(ID) {
     const novaUvećana = document.getElementById(`grid-stavka-${ID}`);
-    
+
     if (novaUvećana) {
         if (trenutniUvećaniID !== 0) {
             const prethodnaUvećana = document.getElementById(`grid-stavka-${trenutniUvećaniID}`);
             if (prethodnaUvećana) {
-                prethodnaUvećana.style.width = '';  // Postavljamo širinu na prazan string da bi se vratio na inicijalnu vrijednost
+                prethodnaUvećana.style.width = '';
                 prethodnaUvećana.classList.remove('uvećana-nekretnina');
+                const detaljiContainer = prethodnaUvećana.querySelector('.detalji-container');
+                if (detaljiContainer) {
+                    detaljiContainer.remove();
+                }
+                const prikaziDetaljeButton = prethodnaUvećana.querySelector(`#prikaziDetalje-${trenutniUvećaniID}`);
+                if (prikaziDetaljeButton) {
+                    prikaziDetaljeButton.remove();
+                }
             }
+        }
+        PoziviAjax.getNekretnineById(ID, (error, nekretnina) => {
+        if (!error) {
+        const detaljiContainer = novaUvećana.querySelector('.detalji-container');
+        if (!detaljiContainer) {
+            const detaljiContainer = document.createElement('div');
+            detaljiContainer.classList.add('detalji-container');
+            detaljiContainer.innerHTML = `
+                <p>Lokacija: ${nekretnina.lokacija}</p>
+                <p>Godina izgradnje: ${nekretnina.godina_izgradnje}</p>
+            `;
+            novaUvećana.appendChild(detaljiContainer);
+        }
+
+        const prikaziDetaljeButton = novaUvećana.querySelector(`#prikaziDetalje-${ID}`);
+        if (!prikaziDetaljeButton) {
+            const prikaziDetaljeButton = document.createElement('button');
+            prikaziDetaljeButton.innerText = 'Prikaži detalje';
+            prikaziDetaljeButton.id = `prikaziDetalje-${ID}`;
+            prikaziDetaljeButton.onclick = () => prikaziDetalje(ID);
+            prikaziDetaljeButton.style.width = '70px';
+            prikaziDetaljeButton.style.marginTop = '10px';
+            novaUvećana.appendChild(prikaziDetaljeButton);
         }
 
         novaUvećana.classList.add('uvećana-nekretnina');
         novaUvećana.style.width = '500px';
         document.body.style.gridTemplateColumns = 'repeat(auto-fit, minmax(500px, 1fr))';
         trenutniUvećaniID = ID;
+        prikaziDetaljeDodato = true;}
+        else {
+            console.error(`Error fetching nekretnina by ID ${ID}: ${error}`);
+        }
+    });
     }
 
     MarketingAjax.klikNekretnina(ID);
 }
 
+function prikaziDetalje(ID){
+    window.location.href = `/detalji.html?id=${ID}`;
+}
 

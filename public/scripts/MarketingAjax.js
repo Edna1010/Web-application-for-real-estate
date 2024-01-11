@@ -15,7 +15,7 @@ const MarketingAjax = (() => {
               prethodniBrojPretraga=nekretnina.brojpretraga;
               const divId = `pretrage-${nekretnina.id}`;
               const div = divNekretnine.querySelector(`#${divId}`);
-              if (nekretnina.brojpretraga !== undefined) {
+             if (nekretnina.brojpretraga !== undefined) {
                   if (div) {
                       div.textContent = `Broj pretraga: ${nekretnina.brojpretraga}`;
                   } else {

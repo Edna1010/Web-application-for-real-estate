@@ -17,6 +17,12 @@ function inicializacija() {
             username: 'neko123',
             password: 'password123'
         }));
+        korisniciListaPromisea.push(db.Korisnik.create({
+            Ime: 'Edna',  
+            Prezime: 'Basic',  
+            username: 'ebasic',
+            password: 'Edna123'
+        }));
         nekretnineListaPromisea.push(db.Nekretnina.create({
             tip_nekretnine: 'Stan',
             naziv: 'Lijep stan',

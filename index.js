@@ -271,7 +271,7 @@ app.post('/marketing/nekretnina/:id', async (req, res) => {
 });
 app.post('/marketing/osvjezi', async (req, res) => {
   try {
-    if (!req.body || req.body.length === 0) {
+    if (!req.body || Object.keys(req.body).length === 0) {
       return res.status(200).json({ nizNekretnina: [] });
     }
 

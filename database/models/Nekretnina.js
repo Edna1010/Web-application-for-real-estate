@@ -1,5 +1,5 @@
 module.exports=function(sequelize, DataTypes){
-    const Nekretnina=sequelize.define("nekretnina",{
+    const Nekretnina=sequelize.define("Nekretnina",{
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -35,7 +35,7 @@ module.exports=function(sequelize, DataTypes){
             allowNull: false,
         },
         datum_objave:{
-            type: DataTypes.DATE,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         opis:{

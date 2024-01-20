@@ -16,10 +16,10 @@ db.sequelize.options.logging = console.log;
 
 db.Korisnik = require(__dirname + '/models/Korisnik')(sequelize, Sequelize);
 db.Nekretnina=require(__dirname + '/models/Nekretnina')(sequelize, Sequelize);
-db.Upiti=require(__dirname + '/models/Upiti')(sequelize, Sequelize);
+db.Upit=require(__dirname + '/models/Upit')(sequelize, Sequelize);
 
-db.Nekretnina.hasMany(db.Upiti, { foreignKey: 'IDNekretnine', as: 'Upiti' });
-db.Upiti.belongsTo(db.Nekretnina, { foreignKey: 'IDNekretnine', as: 'Nekretnina' });
-db.Korisnik.hasMany(db.Upiti, { foreignKey: 'IDKorisnika', as: 'Upiti' });
-db.Upiti.belongsTo(db.Korisnik, { foreignKey: 'IDKorisnika', as: 'Korisnik' });
+db.Nekretnina.hasMany(db.Upit, { foreignKey: 'IDNekretnine', as: 'Upiti' });
+db.Upit.belongsTo(db.Nekretnina, { foreignKey: 'IDNekretnine', as: 'Nekretnina' });
+db.Korisnik.hasMany(db.Upit, { foreignKey: 'IDKorisnika', as: 'Upiti' });
+db.Upit.belongsTo(db.Korisnik, { foreignKey: 'IDKorisnika', as: 'Korisnik' });
 module.exports = db;

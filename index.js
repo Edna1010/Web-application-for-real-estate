@@ -43,15 +43,10 @@ async function hashPasswords() {
   const Korisnik = require('./database/models/Korisnik.js')(db.sequelize, db.Sequelize);
   const korisnici = await Korisnik.findAll();
   try {
-    console.log('Pronađeni korisnici:', korisnici);
     for (const korisnik of korisnici)  {
       if (!korisnik.password.startsWith('$2b$')) {
-        //console.log('Pre hashiranja:', korisnik.password);
         const hashPassword = await bcrypt.hash(korisnik.password, 10);
-        //console.log('Posle hashiranja:', hashPassword);
         korisnik.password = hashPassword;
-        //console.log("+",korisnik.password);
-        //console.log(korisnik);
           await korisnik.update({ password: hashPassword });
           await korisnik.save();
           await korisnik.reload();
@@ -72,7 +67,6 @@ app.post('/login', async (req, res) => {
     const users = await Korisnik.findAll();
     const { username, password } = req.body;
     const korisnik = users.find(u => u.username == username);
-    console.log(korisnik);
     if (korisnik && await bcrypt.compare(password, korisnik.password)) {
       req.session.username = username;
       return res.status(200).json({ poruka: 'Uspješna prijava' });
@@ -144,7 +138,7 @@ app.post('/upit', async (req, res) => {
     if (ulogovaniKorisnik) {
       const nekretnina = await db.Nekretnina.findByPk(parseInt(IDNekretnine));
       if (nekretnina) {
-        const newUpit = await db.Upiti.create({
+        const newUpit = await db.Upit.create({
           Tekst: Tekst,
           IDNekretnine: nekretnina.id,
           IDKorisnika: ulogovaniKorisnik.id,

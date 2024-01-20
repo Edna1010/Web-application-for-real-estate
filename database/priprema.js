@@ -31,7 +31,7 @@ function inicializacija() {
             tip_grijanja: 'Centralno',
             lokacija: 'Sarajevo',
             godina_izgradnje: 2022,
-            datum_objave: new Date(),
+            datum_objave:'12.11.2023.' ,
             opis: 'Prostran stan sa lijepim pogledom.',
             brojpretraga: 0,
             brojklikova: 0
@@ -43,17 +43,17 @@ function inicializacija() {
             tip_grijanja: 'Centralno',
             lokacija: 'Sarajevo',
             godina_izgradnje: 2021,
-            datum_objave: new Date(),
+            datum_objave: '10.10.2023.' ,
             opis: 'Prostrana kuća sa lijepim pogledom.',
             brojpretraga: 0,
             brojklikova: 0}));
 
-        upitiListaPromisea.push(db.Upiti.create({
+        upitiListaPromisea.push(db.Upit.create({
             Tekst: 'Da li je ovo stara gradnja?',
             IDNekretnine: 1,
             IDKorisnika: 1
         }));
-        upitiListaPromisea.push(db.Upiti.create({
+        upitiListaPromisea.push(db.Upit.create({
             Tekst: 'Da li ima klima?',
             IDNekretnine: 1,
             IDKorisnika: 1
